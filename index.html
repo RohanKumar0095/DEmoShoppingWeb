@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <h2>Amazon Clone</h2>
+
+        <div class="search-container">
+            <input type="text"
+                   id="searchInput"
+                   placeholder="Search Products...">
+
+            <button onclick="searchProducts()">
+                Search
+            </button>
+        </div>
+
+        <div class="nav-right">
+
+            <button id="darkModeBtn">
+                🌙 Dark Mode
+            </button>
+
+            <div class="cart">
+                🛒 Cart:
+                <span id="cartCount">0</span>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <h1>Welcome to Amazon Clone</h1>
+
+        <p>Find amazing products at amazing prices.</p>
+
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+
+        <div class="product-card">
+
+            <h3>Headphones</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>₹999</p>
+
+            <button onclick="addToCart('Headphones')">
+                Add To Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <h3>Smart Watch</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐☆
+            </div>
+
+            <p>₹1999</p>
+
+            <button onclick="addToCart('Smart Watch')">
+                Add To Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <h3>Keyboard</h3>
+
+            <div class="rating">
+                ⭐⭐⭐⭐☆
+            </div>
+
+            <p>₹799</p>
+
+            <button onclick="addToCart('Keyboard')">
+                Add To Cart
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Cart Section -->
+    <section class="cart-section">
+
+        <h2>Your Cart</h2>
+
+        <ul id="cartItems"></ul>
+
+        <button class="clear-btn"
+                onclick="clearCart()">
+            Clear Cart
+        </button>
+
+    </section>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
