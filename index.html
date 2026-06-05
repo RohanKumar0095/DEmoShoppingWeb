@@ -1,124 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon Clone</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopClone – Amazing Deals Every Day</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar">
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-brand">🛒 ShopClone</div>
 
-        <h2>Amazon Clone</h2>
+    <div class="nav-search">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products…"
+        oninput="searchProducts()"
+      />
+      <button onclick="searchProducts()">Search</button>
+    </div>
 
-        <div class="search-container">
-            <input type="text"
-                   id="searchInput"
-                   placeholder="Search Products...">
+    <div class="nav-actions">
+      <button id="darkModeBtn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+      <div class="cart-icon">
+        🛒 Cart <span id="cartCount">0</span>
+      </div>
+    </div>
+  </nav>
 
-            <button onclick="searchProducts()">
-                Search
-            </button>
-        </div>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <h1>Welcome to ShopClone</h1>
+    <p>Amazing products at prices you'll love. Shop now and save big!</p>
+    <a href="#products" class="hero-btn">Shop Now ↓</a>
+  </section>
 
-        <div class="nav-right">
+  <!-- ── PRODUCTS ── -->
+  <section class="products-section" id="products">
+    <h2 class="section-title">Featured Products</h2>
+    <div class="products-grid" id="productsGrid">
 
-            <button id="darkModeBtn">
-                🌙 Dark Mode
-            </button>
+      <div class="product-card" data-name="headphones">
+        <div class="product-emoji">🎧</div>
+        <h3>Headphones</h3>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>(4.8)</span></div>
+        <p class="price">₹999</p>
+        <button class="add-btn" onclick="addToCart('Headphones', 999)">Add to Cart</button>
+      </div>
 
-            <div class="cart">
-                🛒 Cart:
-                <span id="cartCount">0</span>
-            </div>
+      <div class="product-card" data-name="smart watch">
+        <div class="product-emoji">⌚</div>
+        <h3>Smart Watch</h3>
+        <div class="rating">⭐⭐⭐⭐☆ <span>(4.2)</span></div>
+        <p class="price">₹1,999</p>
+        <button class="add-btn" onclick="addToCart('Smart Watch', 1999)">Add to Cart</button>
+      </div>
 
-        </div>
+      <div class="product-card" data-name="keyboard">
+        <div class="product-emoji">⌨️</div>
+        <h3>Mechanical Keyboard</h3>
+        <div class="rating">⭐⭐⭐⭐☆ <span>(4.4)</span></div>
+        <p class="price">₹799</p>
+        <button class="add-btn" onclick="addToCart('Mechanical Keyboard', 799)">Add to Cart</button>
+      </div>
 
-    </nav>
+      <div class="product-card" data-name="wireless mouse">
+        <div class="product-emoji">🖱️</div>
+        <h3>Wireless Mouse</h3>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>(4.9)</span></div>
+        <p class="price">₹549</p>
+        <button class="add-btn" onclick="addToCart('Wireless Mouse', 549)">Add to Cart</button>
+      </div>
 
-    <!-- Hero -->
-    <section class="hero">
+      <div class="product-card" data-name="webcam">
+        <div class="product-emoji">📷</div>
+        <h3>HD Webcam</h3>
+        <div class="rating">⭐⭐⭐⭐☆ <span>(4.1)</span></div>
+        <p class="price">₹1,299</p>
+        <button class="add-btn" onclick="addToCart('HD Webcam', 1299)">Add to Cart</button>
+      </div>
 
-        <h1>Welcome to Amazon Clone</h1>
+      <div class="product-card" data-name="usb hub">
+        <div class="product-emoji">🔌</div>
+        <h3>USB-C Hub</h3>
+        <div class="rating">⭐⭐⭐⭐☆ <span>(4.3)</span></div>
+        <p class="price">₹449</p>
+        <button class="add-btn" onclick="addToCart('USB-C Hub', 449)">Add to Cart</button>
+      </div>
 
-        <p>Find amazing products at amazing prices.</p>
+      <div class="product-card" data-name="phone stand">
+        <div class="product-emoji">📱</div>
+        <h3>Phone Stand</h3>
+        <div class="rating">⭐⭐⭐⭐⭐ <span>(4.7)</span></div>
+        <p class="price">₹299</p>
+        <button class="add-btn" onclick="addToCart('Phone Stand', 299)">Add to Cart</button>
+      </div>
 
-    </section>
+      <div class="product-card" data-name="laptop bag">
+        <div class="product-emoji">💼</div>
+        <h3>Laptop Bag</h3>
+        <div class="rating">⭐⭐⭐⭐☆ <span>(4.0)</span></div>
+        <p class="price">₹1,199</p>
+        <button class="add-btn" onclick="addToCart('Laptop Bag', 1199)">Add to Cart</button>
+      </div>
 
-    <!-- Products -->
-    <section class="products">
+    </div>
 
-        <div class="product-card">
+    <p id="noResults" class="no-results" style="display:none;">
+      😕 No products found. Try a different search.
+    </p>
+  </section>
 
-            <h3>Headphones</h3>
+  <!-- ── CART ── -->
+  <section class="cart-section" id="cartSection">
+    <h2>🛒 Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <div id="cartSummary" class="cart-summary" style="display:none;">
+      <p>Total: <strong id="cartTotal">₹0</strong></p>
+      <button class="checkout-btn">Proceed to Checkout</button>
+      <button class="clear-btn" onclick="clearCart()">🗑️ Clear Cart</button>
+    </div>
+    <p id="emptyCartMsg" class="empty-cart">Your cart is empty. Add some products!</p>
+  </section>
 
-            <div class="rating">
-                ⭐⭐⭐⭐⭐
-            </div>
+  <!-- ── TOAST NOTIFICATION ── -->
+  <div id="toast" class="toast"></div>
 
-            <p>₹999</p>
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>© 2024 ShopClone &nbsp;|&nbsp; Built with ❤️ using HTML, CSS &amp; JavaScript</p>
+  </footer>
 
-            <button onclick="addToCart('Headphones')">
-                Add To Cart
-            </button>
-
-        </div>
-
-        <div class="product-card">
-
-            <h3>Smart Watch</h3>
-
-            <div class="rating">
-                ⭐⭐⭐⭐☆
-            </div>
-
-            <p>₹1999</p>
-
-            <button onclick="addToCart('Smart Watch')">
-                Add To Cart
-            </button>
-
-        </div>
-
-        <div class="product-card">
-
-            <h3>Keyboard</h3>
-
-            <div class="rating">
-                ⭐⭐⭐⭐☆
-            </div>
-
-            <p>₹799</p>
-
-            <button onclick="addToCart('Keyboard')">
-                Add To Cart
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- Cart Section -->
-    <section class="cart-section">
-
-        <h2>Your Cart</h2>
-
-        <ul id="cartItems"></ul>
-
-        <button class="clear-btn"
-                onclick="clearCart()">
-            Clear Cart
-        </button>
-
-    </section>
-
-    <script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
